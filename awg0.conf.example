@@ -1,0 +1,24 @@
+# `awg setconf` format: no Address / DNS / PostUp / Table here (the entrypoint
+# sets the address and routing). Generate keys with:
+#   docker compose run --rm --entrypoint awg awg-in genkey
+#   echo <private> | docker compose run --rm -T --entrypoint awg awg-in pubkey
+[Interface]
+PrivateKey = <server-private-key>
+ListenPort = 51820
+# Obfuscation: every value must match the client config exactly.
+Jc   = 4
+Jmin = 40
+Jmax = 70
+S1   = 15
+S2   = 23
+H1   = 1000000001
+H2   = 1000000002
+H3   = 1000000003
+H4   = 1000000004
+# AWG 1.5/2.0/3.x extras (S3, S4, I1..I5, header protection, ...): add them only
+# if your pinned amneziawg-go AND amneziawg-tools builds understand them.
+
+[Peer]
+PublicKey  = <client-public-key>
+# PresharedKey = <optional>
+AllowedIPs = 10.8.0.2/32
