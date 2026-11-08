@@ -1,4 +1,4 @@
 # real AWG config contains private keys - never commit it
-awg0.conf
+*.conf
 *.key
 
